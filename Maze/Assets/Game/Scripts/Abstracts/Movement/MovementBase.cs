@@ -9,11 +9,6 @@ namespace Abstraction.Movement
         protected Vector3 Velocity;
         protected bool IsGrounded;
         [SerializeField] protected float _gravity = -9.81f;
-        
-        //Speed and its variations may vary according to the character therefore it is not declared here.
-        //After some iterations we can decide to declare it here if every movement script has the same speed variations.
-        //[SerializeField] protected float _speed = 12f;
-        
         [SerializeField] protected float _rotationSpeed = 120f;
         [SerializeField] protected float _groundDistance = 0.4f;
         [SerializeField] protected Transform _groundCheck;
