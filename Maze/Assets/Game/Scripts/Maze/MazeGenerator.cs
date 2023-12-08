@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeGenerator : Singleton<MazeGenerator> // This class applies Depth First Search Algorithm When Generating The Maze
+public class MazeGenerator : Singleton<MazeGenerator> // This class applies DFS Algorithm When Generating The Maze
 {
 	[SerializeField] private MazeNode nodePrefab;
 	[SerializeField] private Vector2Int mazeSize;

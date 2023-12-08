@@ -3,7 +3,6 @@ using UnityEngine;
 public class MazeNode : MonoBehaviour
 {
 	[SerializeField] private GameObject[] m_Walls;
-	[SerializeField] private MeshRenderer m_Floor;
 
 	public void RemoveWall(int wallToRemove)
 	{

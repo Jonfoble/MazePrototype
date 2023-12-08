@@ -1921,7 +1921,7 @@ MonoBehaviour:
   mazeSize: {x: 10, y: 10}
   flagPrefab: {fileID: 2055529307928937965, guid: ffc45db319660564d9217792c0f03ad0,
     type: 3}
-  obstaclePrefab: {fileID: 7357879470389534046, guid: dc33fe721189e414e848d1a697d3ba99,
+  obstaclePrefab: {fileID: 7019216588859069310, guid: dc33fe721189e414e848d1a697d3ba99,
     type: 3}
   numberOfObstacles: 5
   nodeSize: 2
