@@ -2,11 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeGenerator : Singleton<MazeGenerator>
+public class MazeGenerator : Singleton<MazeGenerator> // This class applies Depth First Search Algorithm When Generating The Maze
 {
 	[SerializeField] private MazeNode nodePrefab;
 	[SerializeField] private Vector2Int mazeSize;
 	[SerializeField] private GameObject flagPrefab;
+	[SerializeField] private GameObject obstaclePrefab;
+	[SerializeField] private int numberOfObstacles; // Number of obstacles to place
+
+	[SerializeField] private float nodeSize = 1.0f; //this should match the size of the prefab as well
+
 	public Action<Transform> OnFlagSpawned;
 
 	public event Action<List<MazeNode>> OnMazeReady;
@@ -14,6 +19,7 @@ public class MazeGenerator : Singleton<MazeGenerator>
 	private void Start()
 	{
 		List<MazeNode> nodes = GenerateMaze(mazeSize);
+		SpawnObstacles(nodes);
 		SpawnFlagAtEnd(nodes);
 		OnMazeReady?.Invoke(nodes);
 	}
@@ -31,7 +37,7 @@ public class MazeGenerator : Singleton<MazeGenerator>
 		{
 			for (int y = 0; y < size.y; y++)
 			{
-				Vector3 nodePos = new Vector3(x - (size.x / 2f), 0, y - (size.y / 2f));
+				Vector3 nodePos = new Vector3(x * nodeSize - (size.x * nodeSize / 2f), 0, y * nodeSize - (size.y * nodeSize / 2f));
 				MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
 				nodes.Add(newNode);
 			}
@@ -145,6 +151,22 @@ public class MazeGenerator : Singleton<MazeGenerator>
 			Vector3 spawnPosition = endNode.transform.position;
 			GameObject Flag = Instantiate(flagPrefab, spawnPosition, Quaternion.identity);
 			OnFlagSpawned?.Invoke(Flag.transform);
+		}
+	}
+	private void SpawnObstacles(List<MazeNode> nodes)
+	{
+		HashSet<int> occupiedIndices = new HashSet<int>();
+		for (int i = 0; i < numberOfObstacles; i++)
+		{
+			int index;
+			do
+			{
+				index = UnityEngine.Random.Range(0, nodes.Count);
+			}
+			while (occupiedIndices.Contains(index));
+
+			occupiedIndices.Add(index);
+			Instantiate(obstaclePrefab, nodes[index].transform.position, Quaternion.identity, transform);
 		}
 	}
 }

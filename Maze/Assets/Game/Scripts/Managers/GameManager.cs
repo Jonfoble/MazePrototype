@@ -17,12 +17,15 @@ public class GameManager : Singleton<GameManager>
 	{
 		MazeGenerator.Instance.OnMazeReady += SpawnPlayerAtStart;
 		Flag.OnGameWon += HandleGameWon;
+		Obstacle.OnObstacleHit += ResetGame;
 	}
 
 	private void OnDisable()
 	{
 		MazeGenerator.Instance.OnMazeReady -= SpawnPlayerAtStart;
 		Flag.OnGameWon -= HandleGameWon;
+		Obstacle.OnObstacleHit -= ResetGame;
+
 	}
 	private void Start()
 	{

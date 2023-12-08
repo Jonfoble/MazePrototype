@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37.5}
+  m_AnchoredPosition: {x: 0, y: -32}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &661303730
@@ -1916,11 +1916,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31b624e7043c17409192f90dbdd2819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodePrefab: {fileID: 4545655603644212114, guid: 8a33b1b5a3328ac45876533d141c7112,
+  nodePrefab: {fileID: 8721593183912122669, guid: 8a33b1b5a3328ac45876533d141c7112,
     type: 3}
   mazeSize: {x: 10, y: 10}
   flagPrefab: {fileID: 2055529307928937965, guid: ffc45db319660564d9217792c0f03ad0,
     type: 3}
+  obstaclePrefab: {fileID: 7357879470389534046, guid: dc33fe721189e414e848d1a697d3ba99,
+    type: 3}
+  numberOfObstacles: 5
+  nodeSize: 2
 --- !u!4 &1700052532
 Transform:
   m_ObjectHideFlags: 0
