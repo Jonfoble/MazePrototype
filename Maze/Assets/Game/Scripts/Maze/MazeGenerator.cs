@@ -155,7 +155,12 @@ public class MazeGenerator : Singleton<MazeGenerator> // This class applies Dept
 	}
 	private void SpawnObstacles(List<MazeNode> nodes)
 	{
-		HashSet<int> occupiedIndices = new HashSet<int>();
+		HashSet<int> occupiedIndices = new HashSet<int>
+	{
+		0, // Excluding the first node (Player Spawn)
+        nodes.Count - 1 // Excluding the last node (Flag Spawn)
+    };
+
 		for (int i = 0; i < numberOfObstacles; i++)
 		{
 			int index;
